@@ -13,7 +13,7 @@ module.exports = function svgoLoader(source) {
     if (this.resourceQuery[0] === '?') {
       dataUrl = 'dataUrl' in loaderUtils.parseQuery(this.resourceQuery);
     }
-    const svgStr = (dataUrl ? 'data:image/svg+xml;utf8,' : '') + result.data;
+    const svgStr = (dataUrl ? 'data:image/svg+xml;charset=utf8,' : '') + result.data;
     if (this.loaderIndex) {
       callback(null, svgStr);
     } else {
