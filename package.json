@@ -25,6 +25,7 @@
   "license": "MIT",
   "dependencies": {
     "loader-utils": "^1.1.0",
+    "mini-svg-data-uri": "^1.0.2",
     "svgo": "^1.1.1"
   }
 }
