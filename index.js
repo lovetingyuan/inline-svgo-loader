@@ -1,6 +1,15 @@
 const SVGO = require('svgo');
 const loaderUtils = require('loader-utils');
 const instance = new Map();
+/*
+ encodeURI(str)
+  .replace(/=/g, '%3D')
+  .replace(/:/g, '%3A')
+  .replace(/#/g, '%23')
+  .replace(/;/g, '%3B')
+  .replace(/\(/g, '%28')
+  .replace(/\)/g, '%29'))
+*/
 const toDataUri = require('mini-svg-data-uri');
 
 module.exports = function svgoLoader(source) {
