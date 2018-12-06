@@ -19,6 +19,6 @@ npm install git+https://github.com/lovetingyuan/inline-svgo-loader.git --save-de
 }
 ```
 
-append `dataUrl` query param to svg path to get data-url result like `data:image/svg+xml...`(not base64) when used in css `url()`
+support data url(`data:image/svg+xml...`, not base64): just append `dataUrl` query param to svg file path. 
 
-eg: `background-image: url('@/assets/some.svg?dataUrl')`
+eg: work with css `background-image: url('@/assets/some.svg?dataUrl')`.
