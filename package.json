@@ -1,0 +1,30 @@
+{
+  "name": "inline-svgo-loader",
+  "version": "1.0.0",
+  "description": "use svgo to optimize svg file, transformed as inline string",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:lovetingyuan/inline-svgo-loader.git"
+  },
+  "engines": {
+    "node": ">=6.5"
+  },
+  "keywords": [
+    "svg",
+    "svgo",
+    "webpack",
+    "loader",
+    "inline",
+    "data-url"
+  ],
+  "author": "tingyuan",
+  "license": "MIT",
+  "dependencies": {
+    "loader-utils": "^1.1.0",
+    "svgo": "^1.1.1"
+  }
+}
