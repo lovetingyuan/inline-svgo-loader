@@ -4,7 +4,7 @@
   "description": "use svgo to optimize svg file, transformed as inline string",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test"
   },
   "repository": {
     "type": "git",
@@ -27,5 +27,9 @@
     "loader-utils": "^1.1.0",
     "mini-svg-data-uri": "^1.0.2",
     "svgo": "^1.1.1"
+  },
+  "devDependencies": {
+    "tape": "^4.9.1",
+    "webpack": "^4.27.1"
   }
 }
