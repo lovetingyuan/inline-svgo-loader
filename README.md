@@ -1,9 +1,12 @@
 # inline-svgo-loader
 use svgo to optimize svg file, transformed as string or data-url
 
+[![npm version](https://img.shields.io/npm/v/inline-svgo-loader.svg)](https://www.npmjs.com/package/inline-svgo-loader)
+[![Build Status](https://travis-ci.org/lovetingyuan/inline-svgo-loader.svg?branch=master)](https://travis-ci.org/lovetingyuan/inline-svgo-loader)
+
 ### usage
 ```bash
-npm install git+https://github.com/lovetingyuan/inline-svgo-loader.git --save-dev
+npm install inline-svgo-loader --save-dev
 ```
 
 ```javascript
@@ -12,13 +15,14 @@ npm install git+https://github.com/lovetingyuan/inline-svgo-loader.git --save-de
     rules: [
       {
         test: /\.svg$/,
-        loader: 'inline-svgo-loader'
+        loader: 'inline-svgo-loader'，
+        options: {} // passed to svgo, see: https://github.com/svg/svgo#what-it-can-do
       }
     ]
   }
 }
 ```
 
-support data url(`data:image/svg+xml...`, not base64): just append `dataUrl` query param to svg file path. 
+support data url(`data:image/svg+xml...`, not base64): just append `dataUrl` query param to svg file path.
 
 eg: work with css `background-image: url('@/assets/some.svg?dataUrl')`.
