@@ -39,3 +39,5 @@ npm install inline-svgo-loader --save-dev
 Just append `dataUrl` query param to svg file path to support data url(`data:image/svg+xml,%3csvg...`, Not base64).
 
 eg: in css `background-image: url('assets/some.svg?dataUrl')`.
+
+This loader will ignore `datauri` in option `svgo`.

@@ -5,7 +5,6 @@ const isNumber = require('is-number')
 const isPlainObject = require('lodash.isplainobject')
 
 const instances = new WeakMap()
-const obj = {}
 const { name } = require('./package.json')
 
 function normalizeFallback(fallback, originalOptions) { // from url-loader
@@ -39,10 +38,11 @@ module.exports = function svgoLoader(source) {
   const options = loaderUtils.getOptions(this) || {}
   let { svgo, limit, fallback } = options
   if (!isPlainObject(svgo)) {
-    svgo = obj
+    svgo = {}
   }
+  delete svgo.datauri
   if (!instances.has(svgo)) {
-    instances.set(svgo, new SVGO(svgo || {}))
+    instances.set(svgo, new SVGO(svgo))
   }
   const useDataUrl = this.resourceQuery[0] === '?' && ('dataUrl' in loaderUtils.parseQuery(this.resourceQuery))
   instances.get(svgo).optimize(source, { path: this.resourcePath }).then(result => {

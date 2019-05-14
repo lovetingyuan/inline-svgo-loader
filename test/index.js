@@ -91,3 +91,23 @@ test('svgo inline loader', function (t) {
     }
   });
 });
+
+
+test('error', function (t) {
+  const compiler = webpack({
+    entry: path.resolve(__dirname, 'error.js'),
+    module: {
+      rules: [{
+        test: /\.svg$/,
+        loader: require.resolve('../'),
+      }]
+    }
+  });
+  compiler.outputFileSystem = new memoryfs();
+  compiler.run((err, stats) => {
+    t.equal(err, null)
+    t.ok(stats.hasErrors())
+    t.equal(stats.compilation.errors.length, 1)
+    t.end()
+  });
+});
