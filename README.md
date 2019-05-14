@@ -5,7 +5,7 @@ Use [svgo](https://github.com/svg/svgo) to optimize svg file, transformed as **s
 [![Build Status](https://travis-ci.org/lovetingyuan/inline-svgo-loader.svg?branch=master)](https://travis-ci.org/lovetingyuan/inline-svgo-loader)
 
 ### Options
-* `svgo`: [DefinitelyTyped -> svgo](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/svgo/index.d.ts), configuration passed to svgo, see https://github.com/svg/svgo.
+* `svgo`: [SVGO.Options](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/svgo/index.d.ts), configuration passed to svgo, see https://github.com/svg/svgo. (ps: `datauri` will be ignored.)
 * `limit`: `number`, when optimized svg file size is larger than limit, will use `fallback` option.
 * `fallback`: `{ loader: string, options: any }`, see above, default fallback is [`file-loader`](https://github.com/webpack-contrib/file-loader).
 
