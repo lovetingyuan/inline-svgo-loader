@@ -4,8 +4,8 @@ const toDataUri = require('mini-svg-data-uri')
 const isNumber = require('is-number')
 const isPlainObject = require('lodash.isplainobject')
 
-const instances = new WeakMap()
 const { name } = require('./package.json')
+const datauriQuery = 'datauri'
 
 function normalizeFallback(fallback, originalOptions) { // from url-loader
   let loader = 'file-loader'
@@ -36,16 +36,14 @@ function rawLoader(source) { // from raw-loader
 module.exports = function svgoLoader(source) {
   const callback = this.async()
   const options = loaderUtils.getOptions(this) || {}
-  let { svgo, limit, fallback } = options
-  if (!isPlainObject(svgo)) {
-    svgo = {}
+  let { svgo: svgoption, limit, fallback } = options
+  if (!isPlainObject(svgoption)) {
+    svgoption = {}
   }
-  delete svgo.datauri
-  if (!instances.has(svgo)) {
-    instances.set(svgo, new SVGO(svgo))
-  }
-  const useDataUrl = this.resourceQuery[0] === '?' && ('dataUrl' in loaderUtils.parseQuery(this.resourceQuery))
-  instances.get(svgo).optimize(source, { path: this.resourcePath }).then(result => {
+  delete svgoption.datauri
+  const useDataUrl = this.resourceQuery[0] === '?' && (datauriQuery in loaderUtils.parseQuery(this.resourceQuery))
+  const svgo = new SVGO(svgoption)
+  svgo.optimize(source, { path: this.resourcePath }).then(result => {
     let svgStr = result.data
     let overLimit = isNumber(limit) && limit > 0 && svgStr.length > limit
     if (useDataUrl && overLimit) {
@@ -69,11 +67,10 @@ module.exports = function svgoLoader(source) {
         svgStr = toDataUri(svgStr)
       }
       if (this.loaderIndex) {
-        this.emitWarning(new Error(
-          `${name}: not support work with other loaders, use "fallback" option instead.`
-        ))
+        callback(null, svgStr)
+      } else {
+        callback(null, rawLoader(svgStr))
       }
-      callback(null, rawLoader(svgStr))
     }
   }).catch(err => callback(err instanceof Error ? err : new Error(err)))
 }

@@ -1,5 +1,8 @@
+### 3.0.0
+* change `dataUrl` to `datauri`
+
 ### 2.0.1
-* drop `datauri` in `svgo` option, because it contradicts our `?datauri` query param
+* drop `datauri` in `svgo` option, because it contradicts our `?dataUrl` query param
 
 ### 2.0.0
 * options changed, see `readme.md`
