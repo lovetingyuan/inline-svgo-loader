@@ -1,6 +1,6 @@
 {
   "name": "inline-svgo-loader",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "use svgo to optimize svg file, transformed as inline string.",
   "main": "index.js",
   "scripts": {
