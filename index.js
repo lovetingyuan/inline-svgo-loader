@@ -33,7 +33,7 @@ function rawLoader(source) { // from raw-loader
   return `module.exports = ${result}`
 }
 
-module.exports = function svgoLoader(source) {
+module.exports = function svgoInlineLoader(source) {
   const callback = this.async()
   const options = loaderUtils.getOptions(this) || {}
   let { svgo: svgoption, limit, fallback } = options
@@ -68,7 +68,7 @@ module.exports = function svgoLoader(source) {
       }
       if (this.loaderIndex) {
         callback(null, svgStr)
-      } else {
+      } else { // final loader
         callback(null, rawLoader(svgStr))
       }
     }
