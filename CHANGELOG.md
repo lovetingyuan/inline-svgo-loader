@@ -1,3 +1,6 @@
+### 4.0.0
+* update dependency and minimal node version change to `10`
+
 ### 3.0.0
 * change `dataUrl` to `datauri`
 
